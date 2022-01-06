@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link href="src/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+ 
+</head>
+  <body>
+    <div class="container">
+        <form id="city-search" >
+            <div class="row">
+              <div class="col-10">
+                <input
+                  type="search"
+                  placeholder="Search City Here..."
+                  class="form-control"
+                  autofocus="on"
+                  id="search-input"
+                />
+              </div>
+              <div class="col-2">
+                  <button type="submit" class="btn btn-primary">Search</button>
+                  <button type="submit" class="btn btn-primary" id="location-current">My Location</button>
+
+                </div>
+            </div>
+          </form>
+              <h1>Currently in </h1>
+            </div>
+        <div class="location"> <h2 id="current-city" >London</h2><span > <h2 id="current-country">England</h2> </span> </div>
+        <p class="date" id="current-day">
+            <script> document.write(new Date().toLocaleDateString()); </script>
+            </p>
+      <p class="date" id="current-date"></p>
+        <img  src="images/float-cloud.gif" alt="current weather" class="today-weather" width="50%" height="200px">
+        <h1>
+          <div class="row">
+            <div class="col-4">
+              <div class="weather-data" ><span id="temperature-high">10°</span><span>°| </span><span id="temperature-low">8°</span><span>°</span></div>
+              <div class="row"></div>  
+              
+              <span class="col-2 day+1" > high</span>
+              <span class="col-2 day+1" >low</span>
+          </div>
+        </h1>
+        <h1 id="description">Clear</h1>
+      </div>
+      <div class="convert"><a href="#" id="celcius-link">°C/</a><a href="#" id="farenheit-link">°F</a></div>
+     <p>
+        <ul class="stats">
+          <li>Feels like: <span id="feel">6°</span><span>°</span> </li>
+          <li>Humidity: <span id="humidity"> 23</span>%</li>
+          <li>windspeed: <span id="windspeed"> 0.5</span>km/hr </li>
+        </ul>
+     </p>
+      <br>
+        <h3>This week...</h3>
+        <div class="row week">
+            <div class="col-1 day+1">
+            </div>
+            <div class="col-2 day+1">
+              Monday
+
+            </div>
+            <div class="col-2 day+2">
+              Tuesday
+            </div>
+            <div class="col-2 day+3">
+              Wednesday
+            </div>
+            <div class="col-2 day+4">
+              Thursday
+            </div>
+            <div class="col-2 day+5">
+              Friday
+            </div>
+            <div class="col-1 day+1">
+              </div>
+          </div>
+        <div class="row images">
+            <div class="col-1 day+1">
+              </div>
+              <div class="col-2 day+1">
+                  <img src="images/clouds.gif" alt="cloudy" width="50px"> 
+              
+            </div>
+            <div class="col-2 day+2">
+                <img class="rain" src="images/rainy.gif" alt="cloudy" width="50px"> 
+              
+            </div>
+            <div class="col-2 day+3">
+                <img src="images/sun-cloud.gif" alt="cloudy" width="50px"> 
+              
+            </div>
+            <div class="col-2 day+4">
+                <img src="images/clouds.gif" alt="cloudy" width="50px"> 
+              
+            </div>
+            <div class="col-2 day+5">
+                <img src="images/sun-cloud.gif" alt="cloudy" width="50px"> 
+            
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1 day+1">
+              </div>
+          <div class="col-2"> 7° | 4°</div>
+          <div class="col-2">10° | 9°</div>
+          <div class="col-2"> 9° | 7°</div>
+          <div class="col-2"> 6° | 3°</div>
+          <div class="col-2">11° | 8°</div>
+          <div class="col-1 day+1">
+            </div>
+        </div>
+      </div>
+      <script src="src/index.js">
+      </script>      
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+      </script>
+    </div>
+  </body>
+</html>
