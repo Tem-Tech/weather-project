@@ -45,10 +45,14 @@ function convertFarenheit(event) {
   event.preventDefault();
   let maxTemp = document.querySelector("#temperature-high");
   let minTemp = document.querySelector("#temperature-low");
+  let feelT = document.querySelector("#feel");
   let fMax = Math.round((celciusTempMax * 9) / 5 + 32);
   let fMin = Math.round((celciusTempMin * 9) / 5 + 32);
+  let fTempFeel = Math.round((tempFeel * 9) / 5 + 32);
+
   minTemp.innerHTML = fMin;
   maxTemp.innerHTML = fMax;
+  feelT.innerHTML = fTempFeel;
   farenheit.classList.add("active");
   celcius.classList.remove("active");
 }
@@ -56,13 +60,19 @@ function convertCelcius(event) {
   event.preventDefault();
   let maxTempElement = document.querySelector("#temperature-high");
   let minTempElement = document.querySelector("#temperature-low");
+  let feelT = document.querySelector("#feel");
+  let fTempFeel = Math.round(tempFeel);
+
   maxTempElement.innerHTML = Math.round(celciusTempMax);
   minTempElement.innerHTML = Math.round(celciusTempMin);
+  feelT.innerHTML = fTempFeel;
+
   farenheit.classList.remove("active");
   celcius.classList.add("active");
 }
 let celciusTempMax = null;
 let celciusTempMin = null;
+let tempFeel = null;
 let farenheit = document.querySelector("#farenheit-link");
 farenheit.addEventListener("click", convertFarenheit);
 let celcius = document.querySelector("#celcius-link");
@@ -81,6 +91,7 @@ function showWeather(response) {
   currentCountry.innerHTML = response.data.sys.country;
   celciusTempMin = response.data.main.temp_min;
   celciusTempMax = response.data.main.temp_max;
+  tempFeel = response.data.main.feels_like;
 
   document.querySelector("#temperature-high").innerHTML = Math.round(
     response.data.main.temp_max
@@ -126,6 +137,7 @@ function currentWeather(response) {
   currentCountry.innerHTML = response.data.sys.country;
   celciusTempMax = response.data.main.temp_max;
   celciusTempMin = response.data.main.temp_min;
+  tempFeel = response.data.main.feels_like;
 
   document.querySelector("#temperature-high").innerHTML = Math.round(
     response.data.main.temp_max
