@@ -23,7 +23,7 @@
     <div class="container">
         <form id="city-search" >
             <div class="row">
-              <div class="col-10">
+              <div class="col-9">
                 <input
                   type="search"
                   placeholder="Search City Here..."
@@ -32,13 +32,11 @@
                   id="search-input"
                 />
               </div>
-              <div class="col-2">
+              <span class="col-3">
                   <button type="submit" class="btn btn-primary">Search</button>
-                  <span class="col-2">
-                    <button type="submit" class="btn btn-primary" id="location-current">My Location</button>
-                  </span>
-
-                </div>
+                  <button type="submit" class="btn btn-primary" id="location-current">My Location</button>
+              </span>
+                
             </div>
           </form>
               <h1>Currently in </h1>
@@ -61,7 +59,7 @@
         </h1>
         <h1 id="description">Clear</h1>
       </div>
-      <div class="convert"><a href="#" id="celcius-link">°C</a>/<a href="#" id="farenheit-link">°F</a></div>
+      <div class="convert"><a href="#" id="celcius-link" class="active">°C</a>/<a href="#" id="farenheit-link">°F</a></div>
      <p>
         <ul class="stats">
           <li>Feels like: <span id="feel">6°</span><span>°</span> </li>

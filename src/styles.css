@@ -65,3 +65,10 @@ today-weather {
 a {
   text-decoration: none;
 }
+.convert .active {
+  color: gray;
+  cursor: default;
+}
+.convert .active:hover {
+  text-decoration: none;
+}

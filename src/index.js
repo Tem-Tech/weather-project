@@ -49,6 +49,8 @@ function convertFarenheit(event) {
   let fMin = Math.round((celciusTempMin * 9) / 5 + 32);
   minTemp.innerHTML = fMin;
   maxTemp.innerHTML = fMax;
+  farenheit.classList.add("active");
+  celcius.classList.remove("active");
 }
 function convertCelcius(event) {
   event.preventDefault();
@@ -56,6 +58,8 @@ function convertCelcius(event) {
   let minTempElement = document.querySelector("#temperature-low");
   maxTempElement.innerHTML = Math.round(celciusTempMax);
   minTempElement.innerHTML = Math.round(celciusTempMin);
+  farenheit.classList.remove("active");
+  celcius.classList.add("active");
 }
 let celciusTempMax = null;
 let celciusTempMin = null;
