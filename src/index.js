@@ -7,7 +7,7 @@ let days = [
   "Wednesday",
   "Thursday",
   "Friday",
-  "Saturday"
+  "Saturday",
 ];
 let months = [
   "January",
@@ -21,7 +21,7 @@ let months = [
   "September",
   "October",
   "November",
-  "December"
+  "December",
 ];
 let hour = currentDate.getHours();
 if (hour < 10) {
@@ -41,24 +41,28 @@ let todaysDate = document.querySelector("#current-date");
 todaysDate.innerHTML = ` ${month} ${date}, ${year}`;
 
 ///create conversion to celcius or farenheit functions
-function converFarenheit(event) {
+function convertFarenheit(event) {
   event.preventDefault();
-  let FtemperatureElement = document.querySelector("#temperature");
-  let Ftemperature = FtemperatureElement.innerHTML;
-  Ftemperature = Number(Ftemperature);
-  FtemperatureElement.innerHTML = Math.round((Ftemperature * 9) / 5 + 32);
+  let maxTemp = document.querySelector("#temperature-high");
+  let minTemp = document.querySelector("#temperature-low");
+  let fMax = Math.round((celciusTempMax * 9) / 5 + 32);
+  let fMin = Math.round((celciusTempMin * 9) / 5 + 32);
+  minTemp.innerHTML = fMin;
+  maxTemp.innerHTML = fMax;
 }
-function converCelcius(event) {
+function convertCelcius(event) {
   event.preventDefault();
-  let CtemperatureElement = document.querySelector("#temperature");
-  let Ctemperature = CtemperatureElement.innerHTML;
-  Ctemperature = Number(Ctemperature);
-  CtemperatureElement.innerHTML = Math.round(((Ctemperature - 32) * 5) / 9);
+  let maxTempElement = document.querySelector("#temperature-high");
+  let minTempElement = document.querySelector("#temperature-low");
+  maxTempElement.innerHTML = Math.round(celciusTempMax);
+  minTempElement.innerHTML = Math.round(celciusTempMin);
 }
+let celciusTempMax = null;
+let celciusTempMin = null;
 let farenheit = document.querySelector("#farenheit-link");
-farenheit.addEventListener("click", converFarenheit);
+farenheit.addEventListener("click", convertFarenheit);
 let celcius = document.querySelector("#celcius-link");
-celcius.addEventListener("click", converCelcius);
+celcius.addEventListener("click", convertCelcius);
 
 ///Display name and current weather of searched city
 let currentCity = document.querySelector("#search-input");
@@ -71,6 +75,9 @@ function showWeather(response) {
   currentCity.innerHTML = response.data.name;
   let currentCountry = document.querySelector("#current-country");
   currentCountry.innerHTML = response.data.sys.country;
+  celciusTempMin = response.data.main.temp_min;
+  celciusTempMax = response.data.main.temp_max;
+
   document.querySelector("#temperature-high").innerHTML = Math.round(
     response.data.main.temp_max
   );
@@ -113,6 +120,9 @@ function currentWeather(response) {
   currentCity.innerHTML = response.data.name;
   let currentCountry = document.querySelector("#current-country");
   currentCountry.innerHTML = response.data.sys.country;
+  celciusTempMax = response.data.main.temp_max;
+  celciusTempMin = response.data.main.temp_min;
+
   document.querySelector("#temperature-high").innerHTML = Math.round(
     response.data.main.temp_max
   );

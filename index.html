@@ -34,7 +34,9 @@
               </div>
               <div class="col-2">
                   <button type="submit" class="btn btn-primary">Search</button>
-                  <button type="submit" class="btn btn-primary" id="location-current">My Location</button>
+                  <span class="col-2">
+                    <button type="submit" class="btn btn-primary" id="location-current">My Location</button>
+                  </span>
 
                 </div>
             </div>
@@ -59,7 +61,7 @@
         </h1>
         <h1 id="description">Clear</h1>
       </div>
-      <div class="convert"><a href="#" id="celcius-link">°C/</a><a href="#" id="farenheit-link">°F</a></div>
+      <div class="convert"><a href="#" id="celcius-link">°C</a>/<a href="#" id="farenheit-link">°F</a></div>
      <p>
         <ul class="stats">
           <li>Feels like: <span id="feel">6°</span><span>°</span> </li>
@@ -68,6 +70,7 @@
         </ul>
      </p>
       <br>
+      <hr>
         <h3>This week...</h3>
         <div class="row week">
             <div class="col-1 day+1">
@@ -127,9 +130,7 @@
             </div>
         </div>
         <br>
-        <p>
-          <a href="https://github.com/Tem-Tech/weather-project" class="repos-link">open-source code</a> by Leanne Oyeyemi
-        </p>
+        <footer>This project was coded by <a href="https://www.shecodes.io/" target="_blank" rel="noopener noreferrer">Leanne Oyeyemi</a> and is <a href="https://github.com/Tem-Tech/weather-project" target="_blank" rel="noopener noreferrer">open-sourced on GitHub</a> and <a href="https://kind-noyce-0ae98f.netlify.app/" target="_blank" rel="noopener noreferrer">hosted on Netlify</a></footer>
       </div>
       <script src="src/index.js">
       </script>      

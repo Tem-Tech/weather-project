@@ -62,3 +62,6 @@ today-weather {
   padding-top: 5px;
   padding-bottom: none;
 }
+a {
+  text-decoration: none;
+}
