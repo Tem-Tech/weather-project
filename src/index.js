@@ -84,7 +84,7 @@ let apiKey = "2f77a721f146c97e77d99956a2de9fe0";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity.value}&appid=${apiKey}&units=metric`;
 
 function showWeather(response) {
-  console.log(response.data);
+  console.log(response.data.daily);
   let currentCity = document.querySelector("#current-city");
   currentCity.innerHTML = response.data.name;
   let currentCountry = document.querySelector("#current-country");
@@ -114,6 +114,7 @@ function showWeather(response) {
     response.data.main.feels_like
   );
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  getforecast(response.data.coord);
 }
 
 function showCity(event) {
@@ -126,7 +127,13 @@ let myCity = document.querySelector("#city-search");
 myCity.addEventListener("submit", showCity);
 
 ///Dispay current city and temperature using geolocation API
-
+function getforecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "2f77a721f146c97e77d99956a2de9fe0";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={minutely,alerts}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
 function currentPosition(position) {
   let lat = position.coords.latitude;
   let long = position.coords.longitude;
@@ -166,6 +173,7 @@ function currentWeather(response) {
     response.data.main.feels_like
   );
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  getforecast(response.data.coord);
 }
 function getLocation(event) {
   event.preventDefault();
@@ -179,23 +187,36 @@ function onLoadLocation() {
 }
 window.onload = onLoadLocation();
 /// use API to display forecast
-function displayForecast() {
+function formatDay(timestamp) {
+  let day = new Date(timestamp * 1000);
+  let newDay = day.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+  return days[newDay];
+}
+function displayForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
-  let forecastHTML = "<div class=row><div class=col-1></div>";
-  let days = ["Mon", "Tues", "Wed", "Thur", "Fri"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-2">
-            <div class="forecast-date">${day}</div>
-            <img src="images/01d.svg" alt="response.data.weather[0].description" class="icon" id="icon">
+  let forecastHTML = "<div class=row>";
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2">
+            <div class="forecast-date">${formatDay(forecastDay.dt)}</div>
+            <img src="images/${
+              forecastDay.weather[0].icon
+            }.svg" alt="response.data.weather[0].description" class="icon" id="icon">
             <div class="forecast-temperatures">
-              <span class="minTemperature"> 10º </span>|
-              <span class="maxTemperature"> 17º</span>
+              <span class="minTemperature">${Math.round(
+                forecastDay.temp.min
+              )}°</span>|
+              <span class="maxTemperature">${Math.round(
+                forecastDay.temp.max
+              )}°</span>
             </div>
           </div>`;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
-displayForecast();
