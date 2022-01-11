@@ -94,6 +94,7 @@ function showWeather(response) {
     "src",
     "images/" + response.data.weather[0].icon + ".svg"
   );
+  iconElement.setAttribute("alt", response.data.weather[0].icon);
   celciusTempMin = response.data.main.temp_min;
   celciusTempMax = response.data.main.temp_max;
   tempFeel = response.data.main.feels_like;
@@ -145,6 +146,8 @@ function currentWeather(response) {
     "src",
     `images/${response.data.weather[0].icon}.svg`
   );
+  iconElement.setAttribute("alt", response.data.weather[0].icon);
+
   celciusTempMax = response.data.main.temp_max;
   celciusTempMin = response.data.main.temp_min;
   tempFeel = response.data.main.feels_like;
