@@ -181,16 +181,21 @@ window.onload = onLoadLocation();
 /// use API to display forecast
 function displayForecast() {
   let forecastElement = document.querySelector("#forecast");
-  let forecastHTML = `<div class="row">`;
-  let days = ["Mon", "Tues", "Wed", "Thur", "Fri", "sat"];
+  let forecastHTML = "<div class=row><div class=col-1></div>";
+  let days = ["Mon", "Tues", "Wed", "Thur", "Fri"];
   days.forEach(function (day) {
     forecastHTML =
       forecastHTML +
-      `<div class="col-2 day+1">${day}</div>
-            <div class="col-2 day+1">
-            <img src="images/${response.data.weather[0].icon}.svg" alt="response.data.weather[0].description" width="50px"> 
-            </div><div class="col-2"> 7° | 4°</div>`;
+      `<div class="col-2">
+            <div class="forecast-date">${day}</div>
+            <img src="images/01d.svg" alt="response.data.weather[0].description" class="icon" id="icon">
+            <div class="forecast-temperatures">
+              <span class="minTemperature"> 10º </span>|
+              <span class="maxTemperature"> 17º</span>
+            </div>
+          </div>`;
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
+displayForecast();
