@@ -143,7 +143,7 @@ function currentWeather(response) {
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
-    "images/" + response.data.weather[0].icon + ".svg"
+    `images/${response.data.weather[0].icon}.svg`
   );
   celciusTempMax = response.data.main.temp_max;
   celciusTempMin = response.data.main.temp_min;
