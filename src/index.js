@@ -90,10 +90,10 @@ function showWeather(response) {
   let currentCountry = document.querySelector("#current-country");
   currentCountry.innerHTML = response.data.sys.country;
   let iconElement = document.querySelector("#icon");
-  iconElement.setAttribute("alt", response.data.weather[0].icon);
+  iconElement.setAttribute("alt", response.data.weather[0].description);
   iconElement.setAttribute(
     "src",
-    "images/" + response.data.weather[0].icon + ".svg"
+    `images/${response.data.weather[0].icon}.svg`
   );
   celciusTempMin = response.data.main.temp_min;
   celciusTempMax = response.data.main.temp_max;
@@ -142,7 +142,7 @@ function currentWeather(response) {
   let currentCountry = document.querySelector("#current-country");
   currentCountry.innerHTML = response.data.sys.country;
   let iconElement = document.querySelector("#icon");
-  iconElement.setAttribute("alt", response.data.weather[0].icon);
+  iconElement.setAttribute("alt", response.data.weather[0].description);
   iconElement.setAttribute(
     "src",
     `images/${response.data.weather[0].icon}.svg`
@@ -178,3 +178,19 @@ function onLoadLocation() {
   navigator.geolocation.getCurrentPosition(currentPosition);
 }
 window.onload = onLoadLocation();
+/// use API to display forecast
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Mon", "Tues", "Wed", "Thur", "Fri", "sat"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2 day+1">${day}</div>
+            <div class="col-2 day+1">
+            <img src="images/${response.data.weather[0].icon}.svg" alt="response.data.weather[0].description" width="50px"> 
+            </div><div class="col-2"> 7° | 4°</div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
