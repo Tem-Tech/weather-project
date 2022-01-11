@@ -89,6 +89,11 @@ function showWeather(response) {
   currentCity.innerHTML = response.data.name;
   let currentCountry = document.querySelector("#current-country");
   currentCountry.innerHTML = response.data.sys.country;
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    "images/" + response.data.weather[0].icon + ".svg"
+  );
   celciusTempMin = response.data.main.temp_min;
   celciusTempMax = response.data.main.temp_max;
   tempFeel = response.data.main.feels_like;
@@ -135,6 +140,11 @@ function currentWeather(response) {
   currentCity.innerHTML = response.data.name;
   let currentCountry = document.querySelector("#current-country");
   currentCountry.innerHTML = response.data.sys.country;
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    "images/" + response.data.weather[0].icon + ".svg"
+  );
   celciusTempMax = response.data.main.temp_max;
   celciusTempMin = response.data.main.temp_min;
   tempFeel = response.data.main.feels_like;
