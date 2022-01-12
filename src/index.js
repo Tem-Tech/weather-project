@@ -204,7 +204,7 @@ function displayForecast(response) {
             <div class="forecast-date">${formatDay(forecastDay.dt)}</div>
             <img src="src/images/${
               forecastDay.weather[0].icon
-            }.svg" alt="response.data.weather[0].description" class="icon" id="icon">
+            }.svg" alt=`&{response.data.weather[0].description}` class="icon" id="icon">
             <div class="forecast-temperatures">
               <span class="minTemperature">${Math.round(
                 forecastDay.temp.min
