@@ -83,7 +83,7 @@ let apiKey = "2f77a721f146c97e77d99956a2de9fe0";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity.value}&appid=${apiKey}&units=metric`;
 
 function showWeather(response) {
-  console.log(response.data.daily);
+  console.log(response);
   let currentCity = document.querySelector("#current-city");
   currentCity.innerHTML = response.data.name;
   let currentCountry = document.querySelector("#current-country");
@@ -130,7 +130,6 @@ function getforecast(coordinates) {
   console.log(coordinates);
   let apiKey = "2f77a721f146c97e77d99956a2de9fe0";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={minutely,alerts}&appid=${apiKey}&units=metric`;
-  console.log(apiUrl);
   axios.get(apiUrl).then(displayForecast);
 }
 function currentPosition(position) {
@@ -138,7 +137,6 @@ function currentPosition(position) {
   let long = position.coords.longitude;
   let apiKey = "2f77a721f146c97e77d99956a2de9fe0";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`;
-  console.log(apiUrl);
   axios.get(apiUrl).then(currentWeather);
 }
 function currentWeather(response) {
@@ -202,9 +200,9 @@ function displayForecast(response) {
         forecastHTML +
         `<div class="col-2">
             <div class="forecast-date">${formatDay(forecastDay.dt)}</div>
-            <img src="images/${
-              forecastDay.weather[0].icon
-            }.svg" alt="response.data.weather[0].description" class="icon" id="icon">
+            <img src="images/${forecastDay.weather[0].icon}.svg" alt="${
+          forecastDay.weather[0].description
+        }" class="icon" id="icon">
             <div class="forecast-temperatures">
               <span class="minTemperature">${Math.round(
                 forecastDay.temp.min
