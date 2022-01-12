@@ -92,7 +92,7 @@ function showWeather(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
   iconElement.setAttribute(
     "src",
-    `images/${response.data.weather[0].icon}.svg`
+    `src/images/${response.data.weather[0].icon}.svg`
   );
   celciusTempMin = response.data.main.temp_min;
   celciusTempMax = response.data.main.temp_max;
@@ -151,7 +151,7 @@ function currentWeather(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
   iconElement.setAttribute(
     "src",
-    `images/${response.data.weather[0].icon}.svg`
+    `src/images/${response.data.weather[0].icon}.svg`
   );
   celciusTempMax = response.data.main.temp_max;
   celciusTempMin = response.data.main.temp_min;
@@ -202,7 +202,7 @@ function displayForecast(response) {
         forecastHTML +
         `<div class="col-2">
             <div class="forecast-date">${formatDay(forecastDay.dt)}</div>
-            <img src="images/${
+            <img src="src/images/${
               forecastDay.weather[0].icon
             }.svg" alt="response.data.weather[0].description" class="icon" id="icon">
             <div class="forecast-temperatures">
