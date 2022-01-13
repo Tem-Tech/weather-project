@@ -46,6 +46,7 @@ function convertFarenheit(event) {
   let maxTemp = document.querySelector("#temperature-high");
   let minTemp = document.querySelector("#temperature-low");
   let feelT = document.querySelector("#feel");
+
   let fMax = Math.round((celciusTempMax * 9) / 5 + 32);
   let fMin = Math.round((celciusTempMin * 9) / 5 + 32);
   let fTempFeel = Math.round((tempFeel * 9) / 5 + 32);
